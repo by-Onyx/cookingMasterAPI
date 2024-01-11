@@ -8,7 +8,7 @@ class Dish(Base):
     id = Column(Integer, nullable=False, unique=True, primary_key=True, autoincrement=True)
     name = Column(VARCHAR(100), nullable=False, unique=True)
     cookingTime = Column(Integer, nullable=False)
-    receipt = Column(VARCHAR(1024), nullable=False)
+    receipt = Column(VARCHAR(4096), nullable=False)
     products = Column(VARCHAR(1024), nullable=False)
 
 
