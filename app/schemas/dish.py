@@ -29,6 +29,15 @@ class DishFullSchema(BaseModel):
     categories: Optional[List[CategorySchema]] = None
 
 
+class DishFullSchemaKotlin(BaseModel):
+    id: Optional[int] = None
+    name: Optional[str] = None
+    receipt: Optional[str] = None
+    products: Optional[str] = None
+    tags: Optional[str] = None
+    categories: Optional[str] = None
+
+
 class DishTagSchema(BaseModel):
     dish_id: Optional[int] = None
     tag_id: Optional[int] = None

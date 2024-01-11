@@ -10,7 +10,7 @@ services:
     env_file:
       - .env
     volumes:
-      - postgres-db:/var/lib/postgresql/core
+      - ./postgres-db:/var/lib/postgresql/data
 
   python-for-kotlin:
     build:

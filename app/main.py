@@ -9,7 +9,6 @@ app.include_router(tag_endpoint.router, tags=['tag'])
 app.include_router(category_endpoint.router, tags=['category'])
 app.include_router(photo_endpoint.router, tags=['photo'])
 
-'''
 if __name__ == '__main__':
     uvicorn.run(
         "main:app",
@@ -17,4 +16,3 @@ if __name__ == '__main__':
         port=1337,
         reload=False
     )
-'''

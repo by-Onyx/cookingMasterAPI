@@ -42,3 +42,7 @@ def update_dish(db: Session,
     db.commit()
     db.refresh(_dish)
     return _dish
+
+
+def get_dish_by_name(db: Session, name: str):
+    return db.query(Dish.id).filter(Dish.name.icontains(name)).all()
