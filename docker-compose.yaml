@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  postgres-for-kotlin:
+    image: postgres:latest
+    container_name: cooking-pg
+    ports:
+      - '5432:5432'
+    restart: on-failure
+    env_file:
+      - .env
+    volumes:
+      - postgres-db:/var/lib/postgresql/core
+
+  python-for-kotlin:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: on-failure
+    ports:
+      - '1337:1337'
+    links:
+      - postgres-for-kotlin
+    depends_on:
+      - postgres-for-kotlin
+
+
+volumes:
+  postgres-db:
+
