@@ -89,7 +89,10 @@ async def get_dish_full_info(id: int, db: Session = Depends(get_db)):
 
     _tag_names = ''
     for _tag in _tags:
-        _tag_names += _tag.name + ';'
+        _tag_names += _tag.name + ', '
+
+    if len(_tag_names) > 0:
+        _tag_names = _tag_names[:-2]
 
     _category_ids = dish_category_crud.get_all_categories_by_dish_id(db=db, dish_id=id)
     _categories = [category_crud.get_category_by_id(db=db, category_id=category_id[0])
@@ -97,7 +100,10 @@ async def get_dish_full_info(id: int, db: Session = Depends(get_db)):
 
     _categories_names = ''
     for _category in _categories:
-        _categories_names += _category.name + ';'
+        _categories_names += _category.name + ', '
+
+    if len(_categories_names) > 0:
+        _categories_names = _categories_names[:-2]
 
     return DishFullSchemaKotlin(
         id=_dish.id,
@@ -107,6 +113,7 @@ async def get_dish_full_info(id: int, db: Session = Depends(get_db)):
         tags=_tag_names,
         categories=_categories_names
     )
+
 
 @router.post('/{id}/add_tag/{tag_id}', response_model=DishTagSchema)
 async def add_tag_to_dish(id: int, tag_id: int, db: Session = Depends(get_db)):
@@ -158,7 +165,10 @@ async def get_by_name(name: str, db: Session = Depends(get_db)):
 
         _tag_names = ''
         for _tag in _tags:
-            _tag_names += _tag.name + ';'
+            _tag_names += _tag.name + ', '
+
+        if len(_tag_names) > 0:
+            _tag_names = _tag_names[:-2]
 
         _category_ids = dish_category_crud.get_all_categories_by_dish_id(db=db, dish_id=dish_id[0])
         _categories = [category_crud.get_category_by_id(db=db, category_id=category_id[0])
@@ -166,7 +176,10 @@ async def get_by_name(name: str, db: Session = Depends(get_db)):
 
         _categories_names = ''
         for _category in _categories:
-            _categories_names += _category.name + ';'
+            _categories_names += _category.name + ', '
+
+        if len(_categories_names) > 0:
+            _categories_names = _categories_names[:-2]
 
         _dishes_full.append(DishFullSchemaKotlin(
             id=dish_id[0],
