@@ -145,7 +145,7 @@ async def add_tag_to_dish(id: int, category_id: int, db: Session = Depends(get_d
     )
 
 
-@router.get('/by_name/{name}', response_model=List[DishFullSchemaKotlin])
+@router.get('/by_name/', response_model=List[DishFullSchemaKotlin])
 async def get_by_name(name: str, db: Session = Depends(get_db)):
     _dishes_id = dish_crud.get_dish_by_name(db=db, name=name)
     _dishes_full = list()
